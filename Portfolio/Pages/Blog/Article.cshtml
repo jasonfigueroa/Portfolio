@@ -1,0 +1,12 @@
+﻿@page
+@model Portfolio.Pages.Blog.ArticleModel
+@{
+    ViewData["Title"] = "Article";
+}
+
+<h1>@Model.Article.Title</h1>
+<p>@Model.Article.Author</p>
+<p>@Model.Article.PublishedDate</p>
+<div>
+    @Html.Raw(@Model.Article.Body)
+</div>

@@ -1,0 +1,17 @@
+﻿@page
+@model Portfolio.Pages.Blog.ArticlesModel
+@{
+    ViewData["Title"] = "Articles";
+}
+
+<h1>Articles</h1>
+
+@foreach (var article in Model.Articles)
+{
+    <div>
+        <a asp-page="./Article" asp-route-id="@article.Id">
+            <h2>@article.Title</h2>
+        </a>
+        <p>@article.Description</p>
+    </div>
+}
