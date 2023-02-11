@@ -15,9 +15,9 @@ namespace Portfolio.Services
                     Id = 1,
                     Author = "Jason Figueroa",
                     Title = "Faucibus Nisl Tincidunt",
-                    Description = "<p>Erat nam at lectus urna duis convallis. Egestas tellus " +
+                    Description = "Erat nam at lectus urna duis convallis. Egestas tellus " +
                     "rutrum tellus pellentesque eu tincidunt tortor. Praesent tristique magna " +
-                    "sit amet purus gravida quis.</p>",
+                    "sit amet purus gravida quis.",
                     Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
                     "eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sit amet " +
                     "consectetur adipiscing. Tortor vitae purus faucibus ornare. Ullamcorper morbi " +
@@ -37,9 +37,9 @@ namespace Portfolio.Services
                     Id = 2,
                     Author = "Jason Figueroa",
                     Title = "Duis maximus pretium feugiat",
-                    Description = "<p>Suspendisse finibus vel nulla id tempor. Nullam consequat ligula quis tellus " +
+                    Description = "Suspendisse finibus vel nulla id tempor. Nullam consequat ligula quis tellus " +
                     "placerat cursus. Morbi vehicula quam sed sollicitudin molestie. Morbi id elit ac justo ullamcorper " +
-                    "sodales.</p>",
+                    "sodales.",
                     Body = "<p>Vivamus tincidunt nisl id neque auctor tempus at at quam. Praesent non magna congue, " +
                     "dapibus odio a, dapibus neque. Vivamus at enim semper, sollicitudin est sit amet, lacinia felis. " +
                     "Etiam lacinia neque ac lacinia tristique. Mauris non porttitor nibh. Curabitur a blandit dui. Nunc " +
@@ -71,7 +71,7 @@ namespace Portfolio.Services
                     "sem sit amet sodales. Curabitur in urna fringilla, posuere est in, vulputate neque. " +
                     "Suspendisse laoreet nisl tempus laoreet facilisis. Mauris id massa euismod, vehicula " +
                     "erat eget, bibendum nunc.</p>",
-                    IsPublished = true,
+                    IsPublished = false,
                     PublishedDate = new DateTime(2023, 1, 21),
                     Category = "Maecenas",
                     Tags = "quis"
@@ -81,12 +81,12 @@ namespace Portfolio.Services
 
         public Article GetById(int id)
         {
-            return _articles.FirstOrDefault(a => a.Id == id);
+            return _articles.FirstOrDefault(a => a.Id == id && a.IsPublished == true);
         }
 
         public List<Article> GetAll()
         {
-            return _articles;
+            return _articles.Where(a => a.IsPublished == true).ToList();
         }
     }
 }
